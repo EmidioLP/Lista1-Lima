@@ -1,0 +1,88 @@
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+
+using namespace std;
+
+int *V, n, *V2,*V3, tam2,cont1,cont2,cont3, cont4;
+int *GeraVetor(int tam, int *vetor){
+    vetor= (int*)malloc(tam*sizeof(int));
+    return vetor;
+}
+
+int *EntraVetor(int tam, int *vetor){
+    for(int j=0; j<tam; j++){
+    cout<<"Digite o valor da posição "<<j+1<<": ";
+    cin>>vetor[j];}
+    return vetor;
+}
+
+void MostraVetor(int tam, int *vetor){
+    for(int j=0; j<tam; j++){
+    if (j==0) cout<<"V=["<<vetor[j]<<","; else
+        if (j<tam-1) cout<<vetor[j]<<", "; else
+          cout<<vetor[j]<<"]"<<endl;
+          }
+      }
+      
+int *NovoVetor(int *V, int *V2, int *vetor){
+	tam2 = n*2;
+	V3= GeraVetor(tam2,V3);
+	
+	for(int i=0; i<tam2; i++){
+	cont1+=1;
+	cout<<cont1<<endl;
+		if(i==0){
+			for(int j=0; j<n; j++)
+					vetor[i]= V[j];
+					cont2+=1;
+					cout<<cont2<<endl;
+					if(cont2>=cont1)
+						break;}
+		else if(i%2==0){
+			for(int k=0; k<n; k++)
+					vetor[i]= V[k];
+					cont3+=1;
+					cout<<cont3<<endl;
+					if(cont3>=cont1)
+						break;}
+		else if(i%2!=0){
+			for(int f=0; f<n; f++){
+				vetor[i]=V2[f];
+				cont4+=1;
+				if(cont4>=cont1)
+					break;}
+		}
+	}
+return vetor;
+}
+	
+
+
+                  
+int main(){
+cout<<"Qual o tamanho dos vetores?";
+cin>>n;
+
+cout<<"Vetor 1"<<endl;
+V= GeraVetor(n,V);
+V= EntraVetor(n,V);
+MostraVetor(n,V);
+
+
+cout<<"Vetor 2"<<endl;
+V2= GeraVetor(n,V2);
+V2= EntraVetor(n,V2);
+MostraVetor(n,V2);
+
+
+
+V3= NovoVetor( V, V2, V3);
+MostraVetor(tam2,V3);
+
+free(V);
+free(V2);
+free(V3);
+
+return 0;
+}
