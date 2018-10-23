@@ -25,37 +25,22 @@ void MostraVetor(int tam, int *vetor){
           }
       }
       
-int *NovoVetor(int *V, int *V2, int *vetor){
-	tam2 = n*2;
-	V3= GeraVetor(tam2,V3);
+int *NovoVetor(int tam2, int n, int *V, int *V2, int *vetor){
+
 	
-	for(int i=0; i<tam2; i++){
-	cont1+=1;
-	cout<<cont1<<endl;
-		if(i==0){
-			for(int j=0; j<n; j++)
-					vetor[i]= V[j];
-					cont2+=1;
-					cout<<cont2<<endl;
-					if(cont2>=cont1)
-						break;}
-		else if(i%2==0){
-			for(int k=0; k<n; k++)
-					vetor[i]= V[k];
-					cont3+=1;
-					cout<<cont3<<endl;
-					if(cont3>=cont1)
-						break;}
-		else if(i%2!=0){
-			for(int f=0; f<n; f++){
-				vetor[i]=V2[f];
-				cont4+=1;
-				if(cont4>=cont1)
-					break;}
-		}
-	}
-return vetor;
-}
+    for(int i=0; i<tam2; i+=2){
+        for(int j=0; j<n; j++){
+            if(i==j)
+            vetor[i] = V[j];}
+    for(int i=1; i<tam2; i+=2){
+        for(int k=0; k<n; k++){
+            if(i==k)
+            vetor[i] = V2[k];}
+            }
+    }
+
+return vetor;}
+
 	
 
 
@@ -75,9 +60,11 @@ V2= GeraVetor(n,V2);
 V2= EntraVetor(n,V2);
 MostraVetor(n,V2);
 
+tam2 = n*2;
 
-
-V3= NovoVetor( V, V2, V3);
+V3= GeraVetor(tam2, V3);
+V3= NovoVetor(tam2, n, V, V2, V3);
+cout<<"Vetor 3"<<endl;
 MostraVetor(tam2,V3);
 
 free(V);
