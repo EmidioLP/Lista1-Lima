@@ -40,7 +40,7 @@ void ProcuraVetor(int valor, int tam, int *vetor){
         	posicao+=1;
         	
         	if(posicao>tam)
-        		cout<<"Valor não encontrado";}
+        		cout<<"Valor não encontrado"<<endl;}
 }
 }
                   
