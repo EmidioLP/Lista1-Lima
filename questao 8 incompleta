@@ -1,75 +1,67 @@
 #include <iostream>
 #include <stdlib.h>
-#include <math.h>
 
 using namespace std;
 
-int *V, n, *V2,*V3, tam2,cont1,cont2,cont3, cont4;
-int *GeraVetor(int tam, int *vetor){
-    vetor= (int*)malloc(tam*sizeof(int));
-    return vetor;
+int *V1, *V2, *V3, tam, tamNovo;
+
+int *gerarVetor(int tam, int *vetor){
+	vetor = (int*)calloc(tam,sizeof(int));
+return vetor;
 }
 
-int *EntraVetor(int tam, int *vetor){
-    for(int j=0; j<tam; j++){
-    cout<<"Digite o valor da posição "<<j+1<<": ";
-    cin>>vetor[j];}
-    return vetor;
+int *preencherVetor(int tam, int *vetor){
+	for(int i=0;i<tam;i++){
+		cin >> vetor[i];
+	}
+return vetor;
 }
 
-void MostraVetor(int tam, int *vetor){
-    for(int j=0; j<tam; j++){
-    if (j==0) cout<<"V=["<<vetor[j]<<","; else
-        if (j<tam-1) cout<<vetor[j]<<", "; else
-          cout<<vetor[j]<<"]"<<endl;
-          }
-      }
-      
-int *NovoVetor(int tam2, int n, int *V, int *V2, int *vetor){
+void mostrarVetor(int tam, int *vetor){
+	for(int i=0; i < tam; i++){
+		if(i==0){
+			cout << "[";
+		}if(i < tam-1){
+			cout << vetor[i] << ", ";
+		}else{
+			cout << vetor[i] << "]" << endl;
+		}
+	}
+	cout << endl;
+}
 
-	
-    for(int i=0; i<tam2; i+=2){
-        for(int j=0; j<n; j++){
-            if(i==j)
-            vetor[i] = V[j];}
-    for(int i=1; i<tam2; i+=2){
-        for(int k=0; k<n; k++){
-            if(i==k)
-            vetor[i] = V2[k];}
-            }
-    }
+int *novoVetor(int tam, int *V1, int *V2,int *vetor){
+	for(int i=0;i<tam;i++){
+		if(i%2==0){
+			vetor[i] = V1[i/2];
+		}else{
+			vetor[i] = V2[i/2];
+		}
+	}
+return vetor;
+}
 
-return vetor;}
-
-	
-
-
-                  
 int main(){
-cout<<"Qual o tamanho dos vetores?";
-cin>>n;
-
-cout<<"Vetor 1"<<endl;
-V= GeraVetor(n,V);
-V= EntraVetor(n,V);
-MostraVetor(n,V);
-
-
-cout<<"Vetor 2"<<endl;
-V2= GeraVetor(n,V2);
-V2= EntraVetor(n,V2);
-MostraVetor(n,V2);
-
-tam2 = n*2;
-
-V3= GeraVetor(tam2, V3);
-V3= NovoVetor(tam2, n, V, V2, V3);
-cout<<"Vetor 3"<<endl;
-MostraVetor(tam2,V3);
-
-free(V);
-free(V2);
-free(V3);
-
+	cout << "Qual o tamanho dos vetores? ";
+	cin >> tam;
+	
+	V1 = gerarVetor(tam, V1);
+	V1 = preencherVetor(tam, V1);
+	mostrarVetor(tam, V1);
+	
+	V2 = gerarVetor(tam, V2);
+	V2 = preencherVetor(tam, V2);
+	mostrarVetor(tam, V2);
+	
+	cout << "Novo vetor:" << endl;	
+	tamNovo = 2*tam;
+	V3 = gerarVetor(tamNovo,V3);	
+	V3 = novoVetor(tamNovo,V1,V2,V3);
+	mostrarVetor(tamNovo,V3);
+		
+	free(V1);
+	free(V2);
+	free(V3);
+	
 return 0;
 }
