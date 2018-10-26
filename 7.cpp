@@ -54,6 +54,7 @@ V= EntraVetor(n,V);
 cout<<"Digite o valor a ser encontrado:";
 cin>>v;
 ProcuraVetor(v, n, V);
+free(V);
 
 return 0;
 }
