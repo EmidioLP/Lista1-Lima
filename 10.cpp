@@ -55,6 +55,7 @@ cin>>l>>c;
 M1 = GeraMatriz(l,c,M1);
 M1 = EntraMatriz(l,c,M1);
 M1 = triangularsuperior(l,c,M1);
+LiberaMatriz(l, M1);
 
 return 0;
    } 
