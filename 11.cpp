@@ -28,7 +28,7 @@ char **GeraMatriz(int linha, int col, char **matriz)
 }
 
 char *EntraVetor(int tam, char *vetor){
- 	for(int i=0; i<10; i++){
+ 	for(int i=0; i<tam; i++){
 		cout<<"Questao "<< i + 1<<":\nMarque a, b, c ou d = ";
 		cin>>gabarito[i];
 	}
@@ -37,10 +37,10 @@ char *EntraVetor(int tam, char *vetor){
     }
 	
 char **EntraMatriz (int linha, int coluna, char **matriz, int *vetor){	
-	for(int i=0; i<100; i++){
+	for(int i=0; i<linha; i++){
 		vetor[i]=0;
 		cout<<"Insira as respostas do aluno "<<i+1<<"."<<endl;
-		for(int j=0;j<10;j++){
+		for(int j=0;j<col;j++){
 			cout<<"Questao "<<j+1<<".";
 			cin>>matriz[i][j];
 			if(matriz[i][j] == gabarito[i]){
